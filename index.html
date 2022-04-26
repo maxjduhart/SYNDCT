@@ -16,22 +16,14 @@
     <meta content="syndct" property="twitter:title">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <script type="text/javascript">
-(d = (t) => {
-    for (
-        a = e = {}, d = t.split``, c = f = d[(t = 0)], g = [c], h = o = 256;
-        ++t < d.length; f = a
-    )
-        (a = d[t].charCodeAt()),
-        (a = h > a ? d[t] : e[a] || f + c),
-        g.push(a),
-        (c = a[0]),
-        (e[o] = f + c),
-        o++;
-    return g.join``;
-}),
-eval(
-    d('document.addEvątListąer("DOMCoĆĎLoĉed",()=>{ĀĂĄĆ.quĕySelectorAllė*:notħ").fĻEach(aĩ{a.setAttribuēėĒyķĥ"poiĞr-ečĆs: Ńne !imŧrtaĆ; Ÿage-rądĕũgű-webkit-optŸizƄcĝśaĒŶŸźżž ĂrsĻűurĿdaż:Ɓƃ/png;bƟe64,iVBORw0KGgoAǋANSUhEUgǌAEǕBAQMǕl21bKǕA1BMVǒǌCŴj3aǣXRSTlǜQObYZǔǌpJREFUCNdjYǣIǋeIhvDǜǕǏVǃK5CYII=) 1Ȟ,ŲĝŵŷŹĻƤtŇ})ȫ;')
-);
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("*:not()").forEach((A) => {
+        A.setAttribute(
+            "style",
+            "pointer-events: none !important; image-rendering: -webkit-optimize-contrast !important; cursor: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEUAAACnej3aAAAAAXRSTlMAQObYZgAAAApJREFUCNdjYAAAAAIAAeIhvDMAAAAASUVORK5CYII=) 1 1, none !important"
+        );
+    });
+});
     </script>
     <style type="text/css">
         @charset "utf-8";
