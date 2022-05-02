@@ -1,0 +1,96 @@
+<!DOCTYPE html encoding="UTF-8"><html xmlns="http://www.w3.org/1999/xhtml" encoding="UTF-8">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="utf-8"><meta name="apple-mobile-web-app-capable" content="yes">
+<base target="_blank"><meta http-equiv="imagetoolbar" content="no">
+<title></title>
+<meta name="keywords" content="javascript, convert, ascii text, printable characters, encoder, decoder" />
+<meta name="description" content="Convert a JavaScript that uses character codes over CharCode number 127 or under 26." />
+<meta property="og:title" content="JavaScript Asciifier" />
+<meta property="og:image" content="http://www.scriptcompress.com/canada-javascript-logo.png" />
+<meta property="og:site_name" content="ScriptCompress.com"/>
+<meta property="og:description" content="Convert a JavaScript that uses character codes over CharCode number 127 or under 26."/>
+<base target="_blank" />
+<link rel="icon" type="image/ico" href="http://www.scriptcompress.com/favicon.ico">
+</head>
+<body spellcheck="false">
+<form>
+<center><div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<h2><a href="http://www.ScriptCompress.com">ScriptCompress.com</a>'s JavaScript Asciifier</h2>
+
+<h4>Your Unicode, UTF-8/16, Ansi, Etc Text:</h4>
+
+<textarea placeholder="" wrap="on" nowrap="false" autocapitalize="false" autocorrect="false" spellcheck="false" type=inline charset="utf-8" onfocus="this.select()" id="xCode" oninput=""></TEXTAREA>
+<div style="color:blue;margin-top:-22px;"><input id=bx size=5 style="color:blue;text-align:center;"> <b style="background-color:#ffffff;">bytes.</b>	
+<b style="background-color:#ffffff;">Test:</b> <input type=button value="JS" onclick="testJS(xCode.value);">	
+<input type=button value="HTML" onclick="testHTML(xCode.value);">	
+<input type=button value="URL" onclick="testURL(xCode.value);">
+</div>
+<div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<h4>Compiled/Generated Text:</h4>
+
+<textarea placeholder="" wrap="on" nowrap="false" autocapitalize="false" autocorrect="false" spellcheck="false" type=inline charset="utf-8" onfocus="this.select()" id="Packed"></textarea>
+<div style="color:blue;margin-top:-22px;"><input id=by size=5 style="color:blue;text-align:center;"> <b style="background-color:#ffffff;">bytes.</b>	
+<b style="background-color:#ffffff;">Test:</b> <input type=button value="JS" onclick="testJS(Packed.value);">	
+<input type=button value="HTML" onclick="testHTML(Packed.value);">	
+<input type=button value="URL" onclick="testURL(Packed.value);">
+</div>
+
+<p><INPUT type=button value="Asciify" onclick="doit();"> 
+
+</p>
+<p><b style="font-size:14px;">DOWNLOAD:</b> <input type=button value="TXT" onclick="downloader(Packed.value,'www.WHAK.com.txt');"> 
+<input type=button value="JS" onclick="downloader(Packed.value,'www.WHAK.com.js');"> 
+<input type=button value="HTML" onclick="downloader(Packed.value,'www.WHAK.com.html');"> 
+<input type=button value="DOC" onclick="docs(Packed.value,'word','doc');">
+<input type=button value="XLS" onclick="docs(Packed.value,'excel','xls');"> 
+<b style="font-size:14px;">UPLOAD:</b> <input type="file" id="upload">
+</p>
+<div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div><p>
+Start Marker: <input type="text" id="start" value="\x" size="3" onmouseover="this.select();"> 
+End Marker: <input type="text" id="end" value="" size="3" onmouseover="this.select();">
+Base: <input type="text" id="base" value="16" size="3" onmouseover="this.select();">
+Padding: <input type="text" id="pad" value="3" size="3" onmouseover="this.select();">
+Range: <input type="text" id="range1" value="33" size="3" onmouseover="this.select();"> to 
+<input type="text" id="range2" value="128" size="3" onmouseover="this.select();">
+</p></form>
+<div>ASCII includes definitions for 128 characters: 33 are non-printing control characters (that affect how text and space are processed[8] and 95 printable characters, including the space (which is considered an invisible graphic).</div>
+<script type="text/javascript" defer="defer" src="javascript:doit();void(0)"></script>
+<script type=text/javascript>
+//document.body.addEventListener("load", doit());
+function doit(){Packed.value=asciify(xCode.value.trim());bx.value=bytez(xCode.value);by.value=bytez(Packed.value);}
+
+// pad=5, base=4, /u3132
+function asciify(string){string=string.replace(/\n/g,"WHAK_NEWLINE");return string.split("").map(function(x){var charCode=x.charCodeAt(0);if(charCode>range2.value-1||charCode<range1.value-1)return pre(charCode,base.value,pad.value,start.value,end.value);if(charCode<range2.value-1||charCode>range1.value-1)return x}).join("").replace(/WHAK_NEWLINE/g,"\n")}function padding(string,n){return new Array(n-string.length).join("0")+string}function pre(charCode,base,pad,prefix,postfix){return prefix+padding(charCode.toString(base),pad)+postfix}
+</script>
+<style type="text/css">div{text-align:left;width:728px;}
+body{overflow:none;background:#eee;font-family:Verdana,Arial;font-size:14px;margin:10}
+textarea{resize:both;font-size:14px;width:728px;height:150px;-webkit-box-shadow:inset 2px 5px 3px 0 gray;-moz-box-shadow:inset 2px 5px 3px 0 gray;box-shadow:inset 2px 5px 3px 0 gray;background-color:#F5F5F5}
+input{font-family:Verdana,Arial;font-size:14px;border:1px solid #000;-webkit-box-shadow:2px 2px 2px gray;-moz-box-shadow:2px 2px 2px gray;box-shadow:2px 2px 2px gray;cursor:pointer;color:#000}
+h2{padding:20px 20px 20px 20px;font-size:20px;width:690px;box-shadow:2px 5px 3px gray;text-align:center;background-color:#f5f5f5}
+h2,h4{text-align:left;border:1px solid gray}
+h4{margin-right:292px;font-family:Verdana,Arial;font-size:14px;max-width:420px;box-shadow:0 2px 1px gray;padding:4px 4px 4px 10px;margin-bottom:-4px;margin-top:6px;background:#f5f5f5}
+</style>
+<script>
+function testJS(a,x){x=window.open('about:blank','','width=999,height=666,directories=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,resizable=no,left=0,top=0,screenX=0,screenY=0');x.document.write('<script>'+a.replace(/(\n<\/script>|<script>|<\/script>)/g,'')+'<\/script>')}
+function testHTML(a,x){x=window.open('about:blank','','width=999,height=666,directories=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,resizable=no,left=0,top=0,screenX=0,screenY=0');x.document.write('<title>WHAK.com</title>'+a);x.document.close(a)}
+function testURL(x){if(x.indexOf('data:')>-1){window.open(x,'','width=999,height=666,directories=no,location=no,menubar=no,scrollbars=no,status=no,toolbar=no,resizable=no,left=0,top=0,screenX=0,screenY=0');}else{alert('Data URLs need to begin with data:\n\nEx: data:text/html;base64,V0hBSy5jb20=');}}
+function bytez(e){return e=unescape(encodeURI(e)).length,(""+e).split(/(?=(?:\d{3})+(?:\.|$))/g).join(",")}
+function Base64(string){return window.btoa(unescape(encodeURIComponent(string)))}
+function decBase64(string){return decodeURIComponent(escape(window.atob(string)))}
+function downloader(e,c,a){a=document.createElement("a");document.body.appendChild(a);a.style="display: none";var idz=makeid();a.id=idz;a.href="data:text/WHAK.com;base64,"+Base64(e);a.download=c;document.getElementById(idz).click()}
+function makeid(){var text="";var possible="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";for(var i=0;i<5;i++)text+=possible.charAt(Math.floor(52*Math.random()));return text}
+function docs(str,type,ext){template = '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:'+type+'" xmlns="http://www.w3.org/TR/REC-html40"><head></head><body>'+str+'</body></html>';
+downloader(template,'www.WHAK.com.'+ext);return;}
+/* filename.value=e.name; */
+function uploader(a){a=a.target.result,xCode.value=decBase64(["",a.substr(a.indexOf(",")+1),""].join(""))}function readfile(a){var b=a.target.files[0],c=new FileReader;c.onload=uploader,c.readAsDataURL(b)}window.onload=function(a){doit(),a=document.getElementById("upload"),a.addEventListener("change",readfile,!1),a.addEventListener("drop",readfile,!1),a.addEventListener("dragover",readfile,!1),a.addEventListener("dragenter",readfile,!1),a.addEventListener("dragleave",readfile,!1)};!function(){function e(){document.getElementById("xCode")}function t(e){e.stopPropagation(),e.preventDefault(),document.getElementById("xCode")}function c(t){var c,a,r;for(t.stopPropagation(),t.preventDefault(),e(),t=t.dataTransfer.files,a=0;c=t[a];a++)r=new FileReader,r.onloadend=function(){xCode.value=decBase64(xCode.value)},r.onload=function(e,t){return function(e){e=e.target.result,xCode.value=["",e.substr(e.indexOf(",")+1),""].join("")}}(c,a),r.readAsDataURL(c)}var a=document.getElementById("xCode");window.webkitRequestFileSystem&&window.File&&window.FileReader&&window.FileList&&window.Blob?(a.addEventListener("drop",c,!1),a.addEventListener("dragover",t,!1),a.addEventListener("dragenter",t,!1),a.addEventListener("dragleave",e,!1),a.title="Drag and drop files here!\n\nVisit www.Make-A-Meme.com"):(a.innerHTML="Visit www.Make-A-Meme.com",a.className="compressor"),c=document.documentElement}();
+xCode.value=unescape("var W%2CH%2CA%2CK%3D%27function %E4%28%29%7B\\\n\\\nvar b%2Ca%3Dnew Array%3Breturn a%5B0%DEWHAK%F2%EC1%DE%E2Thumper.net%EC2%DETrollize%F2%EC3%DE%E0-%E2s%F2%EC4%DE%E6A-%EA%F2%EC5%DEBoob%F0s%F2%EC6%DE%EEFreak%F2%EC7%DEIs-A-Jerk%F2%EC8%DE%E0%E2Verse%F2%EC9%DE%E0%E2Search%F2%EC10%DEScriptCompress%F2%EC11%DETXT2PIC%F2%EC12%DE13KG%F2%EC13%DENerdful%F2%EC14%DEFan%F0Generator%F2%EC15%DE%E0-%E2s.org%EC16%DEVirtual%E0%E2%F2%EC17%DESir%EE%F2%EC18%DE%E0-%E2s%F2%EC19%DE%E6A-%EA%F2%22%2Cb%3D%E8.floor%28%E8.random%28%29*a.length%29%2Ca%5Bb%5D%7Dalert%28%E4%28%29%29%3B%27%2CW%3D%27%DE%E0%E2%E4%E6%E8%EA%EC%EE%F0%F2%27.split%28%27%27%29%2CH%3D%27%5D%3D%22http%3A//www.%7CHoly%7CBible%7CrandomSite%7CMake-%7CMath%7CMeme%7C%22%2Ca%5B%7CSeek%7CSign%7C.com%7C%27.split%28%27%7C%27%29%3Bfor%28A%3D0%3BA%3CH.length%3BA++%29K%3DK.split%28W%5BA%5D%29.join%28H%5BA%5D%29%3Beval%28K%29%3B");
+for(var a=document,b=a.head.innerHTML+"\n"+a.body.innerHTML,c="",d=0;d!=b.length;++d)switch(b.charAt(d)){case"<":c+="&lt;";break;case">":c+="&gt;";break;case"&":c+="&amp;";break;default:c+=b.charAt(d)}c=c.substring(0,6666),a.write('</center><center><a href="http://www.whak.com"><img width=728 src=\'data:image/svg+xml;utf8,\<svg xmlns="http://www.w3.org/2000/svg" id="S" viewBox="0 0 1050 744" xmlns:xlink="http://www.w3.org/1999/xlink">\<style> .w{-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-fill-mode:both;animation-fill-mode:both}@-webkit-keyframes z{20%,40%,60%,80%,100%{-webkit-transform:scale(0)}20%{-webkit-transform:rotate(19deg) scale(.2)}40%{-webkit-transform:rotate(-12deg)}60%{-webkit-transform:rotate(9deg)}80%{-webkit-transform:rotate(-5deg)}100%{transform:scale(1);-webkit-transform:rotate(0deg)}}@keyframes z{20%{transform:rotate(9deg)}40%{transform:rotate(-7deg)}60%{transform:rotate(5deg)}80%{transform:rotate(-5deg)}100%{transform:rotate(0deg)}}.z{-webkit-transform:scale(.1);-webkit-transform-origin:top center;transform-origin:top center;-webkit-animation-name:z;animation-name:z}#x{transition-duration:10s}#S{ -webkit-animation: jiggle 10s infinite}@-webkit-keyframes jiggle{33%{-webkit-transform:skew(1deg,1deg)}66%{-webkit-transform:skew(-1deg,-1deg)}}<\/style><title>WHAK.com</title><a xlink:href="http://www.whak.com" id="x" class="w z"><g style="-webkit-transform:scale(.9);"><path d="m287 16c42 24 87 58 120 89 12-13 18-29 32-39 43 31 81 62 118 94 25-39 42-86 62-124 21 45 43 98 63 139 50-47 116-114 116-114 0 25 4 47 4 70 41-39 85-72 85-72-17 38-37 63-63 119 15 0 31 0 46 0 48-17 103-32 145-50 2 3 4 7 1 10-16 19-35 36-50 56 24 10 47 20 67 33 0 4-1 8-1 12 4 3 12 5 9 11-16 24-40 42-58 63 20 1 40 5 60 7l-111 83c21 39 0 0 110 86-61 15-47 10-61 15 6 10 2 4 3 15-21 11 0 0-63 26l103 131c-46-10-84-36-126-42l85 83c-155-76-175-82-156-7-157-96 0 0-157-96-31 21-61 58-92 84-15-21-46-40-57-59l-77 67-4-38c-108 68-38 23-108 68 3-117 0 0 0-120-45 16-95 29-136 45l26-53-117 21 112-78-174 3 67-40-11-114c0 0-54-26-79-36 21-13 51-15 71-26l-85-56 82 25-6-42c53-21 36-14 53-21-28-38-28-38-28-38 45 2 90 3 128 3-21-52-53-98-74-144 58 21 125 45 183 76-16-42-46-83-56-123z" fill="#000"/><path d="m309 42c32 24 64 48 95 73-9 13-18 25-27 39-6-2-14-3-16-9-18-34-33-69-52-103z" fill="#f90"/><path d="m618 60c20 46 42 88 58 131-8-1-17-3-25 1-4 4-5 10-7 15-19 58-40 115-57 173 4-61 11-122 16-184-4 0-8 1-12 1 0-7 1-14 0-21-7-7-18-3-27-2 18-38 36-76 53-115zM185 80c68 30 137 60 204 91 20-28 40-55 61-83 36 29 73 58 109 88-13 2-27 3-40 7-7 2-7 10-8 15-1 30-4 60-4 90-5 1-11 2-16 3 1-26 3-52 4-77-4 1-8 1-12 2 0-7 3-15-1-23-4-2-9-4-14-2-19 2-37 4-56 8-8 1-9 8-11 13-25-3-50-1-75 0-10 0-11 10-13 17-7 30-18 59-23 90-2-23-4-47-4-70-3 0-8 1-10 1-1-9 2-20-7-26-23 6-47 9-69 17-2 14-5 28-7 42-1-7-1-14-2-21-3 1-7 2-10 3 0-8-1-17-3-25-2 0-5-1-7-2-7 2-14 4-21 4-9-6-15-14-23-22 44 0 88 1 132 1-24-46-49-93-74-139zM682 191c36-34 69-70 104-105 0 45 0 91 0 136 5-2 11-3 16-5-12 84-25 168-37 252-9-84-20-168-33-251-2 0-6-1-8-1-2-7-1-16-7-22-11-3-24-3-36-4z" fill="#f00"/><path d="m799 149c20-17 39-36 60-54-10 18-20 36-31 54-9 17-18 33-29 49 0-16 0-32 0-49z" fill="#f90"/><path d="m892 185c33-11 66-23 100-35-10 12-21 24-31 35-27 23-49 50-73 76 4-19 7-38 10-57-5 0-9 0-14-1 2-6-1-16 9-18z" fill="#f00"/><path d="m520 189c21-3 43-7 64-9-9 97-18 193-27 290-21 3-43 5-64 8 3-39 5-79 7-119-14 2-28 4-42 6-2 39-5 78-8 117-17 4-34 8-51 13 4-97 10-193 13-290 21-4 43-6 65-9-2 34-4 69-6 103 15-2 30-4 44-5 2-35 4-70 6-105zM766 518c18-110 33-221 49-332 21 1 42 0 62 2-7 39-13 78-20 117 32-36 65-72 98-107 22 11 45 21 68 33-43 44-85 88-125 134 27 47 51 95 74 143-24 10-48 19-70 31-18-44-38-88-58-132-7 39-13 78-20 117-19-2-38-4-58-6zM657 197c19 1 38 2 58 3 15 97 28 194 37 291-21-1-41-1-62-1-1-18-3-37-4-55-16 1-33 4-49 6-4 16-9 32-14 48-20-2-40-5-60-7 31-95 61-191 95-285zM325 218c25-1 49-1 74-1-29 94-56 188-82 282-29 4-58 8-86 14-1-38-3-75-4-113-9 37-15 73-23 110-1 5-8 5-12 7-24 5-47 12-70 18l-28-269c26-9 52-15 78-22 4 50 6 100 10 151 8-50 16-99 26-149 19-6 40-9 60-14 4 57 5 115 9 172 14-63 32-127 48-184z" fill="#ff0"/><path d="m399 290c1 39-3 78-4 117-3 25-2 51-4 76 0 7-2 16 7 20 8 0 15-3 22-5-1 5-2 10-2 15 18-4 35-9 53-13 3-39 5-78 8-117 4 0 9-1 13-1-1 33-4 66-5 98 5 10 18 4 28 4 0 4 0 8-1 12 15-1 29-5 44-5 9 0 18 2 27 3-1 2-3 5-4 7 20 3 41 4 61 8 5-16 9-32 14-48 8-1 16-2 24-3 1 14 0 28 4 41 8 1 16 2 24 2 0 3 1 6 2 8 17 1 33 0 50 2 1 5-2 13 5 15 7 2 15 2 22 3 0 2 1 5 1 7 19 3 38 3 57 6 5-28 9-57 15-85 6 15 13 29 19 43-3 0-10 1-13 1 41 51 89 100 128 148-72-24-144-49-211-70l24 105c-47-28-93-59-140-88 2 0 6 0 7 0 3 9 14 7 22 8 1-2 3-5 4-7 4 0 8 0 12 0 1 2 2 5 2 7 10 1 21 0 31 0-1-21-4-43-4-64-2 0-6-1-7-1-1-7 1-18-9-20-13-2-27-3-40-2-11 0-10 11-13 18-2-6-2-13-6-17-13-3-26-3-39-4-9 14-9 30-14 45-4-10-8-20-17-27-30-21-80-19-104 8-9-6-7-18-15-24-15 1-29 9-42 15-16 8-36 19-35 37 3 19 26 24 43 31 20 8 42 10 64 11-54 34-107 68-161 102 2-37 4-74 6-111h9c1 3 2 5 2 8 13 0 27 0 40 0-1-8-1-16-2-23-2-1-5-2-6-3-1-7-1-15-8-20-14 1-29-1-43 0-4-1-6 4-8 7-1 11 0 23 6 33-41 11-81 24-122 36 20-33 38-66 57-99-29 0-58 4-87 2 11-2 22-4 33-7 1-4 2-8 2-12 8 1 17 0 25-2 0 4 0 8 0 13 29-4 58-10 87-13 13-49 27-99 42-148 7-26 16-51 22-77z" fill="#f00"/><path d="m676 304c2 23 4 46 7 69-10 1-19 2-28 4 7-24 15-48 22-73z" fill="#000"/><path d="m966 328c3-2 4-6 8-6 14 1 27 4 40 5-31 20-61 40-91 60-2-2-4-4-5-7 16-18 32-35 48-53zM48 362c15-5 31-9 47-13 1 11 3 22 4 33-17-7-34-14-50-20zM952 445c18 12 37 24 55 37-11 1-23 3-34 4-7-14-14-27-21-41z" fill="#f00"/><path d="m628 518c11 1 21 2 32 3 3 12 7 24 11 35 4-11 7-23 11-34 14 0 28 1 41 2 2 21 3 43 5 64-11 1-21 1-32 1-1-13-2-26-4-39-4 13-8 25-12 38-7 0-14 0-20 0-2-11-5-23-7-34-4 12-7 23-10 35-10 0-20-1-30-1 6-23 11-46 17-69zM420 543c15-10 33-17 51-23 2 7 5 13 7 20-14 4-29 8-39 18-5 4-1 10 4 12 15 7 33 6 50 7 2 6 5 11 7 17-25 0-51-1-74-10-9-3-18-9-20-18-1-9 8-16 15-22zM527 523c23-4 51-1 66 16 9 10 10 25 1 35-11 13-30 20-48 19-18 1-38-5-49-18-7-7-6-17-5-26 6-13 20-22 35-26z" fill="#f90"/><path d="m87 541c8-6 17-12 25-18 2 6 1 14 8 16 8 0 15-2 23-3-5 5-12 3-19 4-12 0-24 1-36 1z" fill="#f00"/><path d="m541 539c14-2 32 8 28 21-6 20-44 21-51 0-2-11 11-21 23-22z" fill="#000"/><path d="m235 552c7-4 15-6 23-6-8 14-15 27-23 41-2 4-5 10-11 10-28 5-56 9-84 13 32-19 64-39 95-58z" fill="#f90"/><path d="m535 567c6-8 16-14 28-14 0 13-16 18-27 14zM460 568c7-4 14-7 21-10 1 4 2 7 3 11-8 0-16 0-24-1z" fill="#f00"/><path d="m341 566c14 1 28-1 42 1 1 8 1 16 1 25-13 0-27 0-40 0-1-9-2-17-3-26z" fill="#f90"/><path d="m560 608c17 1 34-5 47-15 8 3 22-1 23 9 7 0 14 0 21 0-23 24-47 47-70 71-22-21-44-42-66-63-1-5-3-11-4-16 16 6 31 15 49 14z" fill="#f00"/><path d="m797 595c25 9 50 17 75 26 3 1 5 2 7 4 25 23 49 48 75 70-34-17-68-33-102-49-17-9-35-15-50-25-1-9-3-17-5-25zM449 658c19-12 38-24 56-36 3 2 6 5 8 7-20 20-42 39-63 58 0-10 0-20-2-29z" fill="#f90"/><\/g><\/a><\/svg>\'><\/a><\/center><pre style="white-space:pre-wrap;position:absolute;left:10px;top:0px;z-index:-420;color:lightgray;font-size:16px;overflow:none;width:1500px;">'+c+'<\/pre>');
+</script>
+</body> 
+</html>

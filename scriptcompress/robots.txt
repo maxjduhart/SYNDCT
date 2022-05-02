@@ -1,0 +1,12 @@
+
+User-Agent: *
+Crawl-Delay: 90
+
+# Disallow: /?q=admin
+# Disallow: /admin/
+# Disallow: /cron.php
+# Disallow: */add/
+
+# askjeeves
+# User-Agent: Teoma
+# Crawl-Delay: 90

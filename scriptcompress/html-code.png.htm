@@ -1,0 +1,25 @@
+<!DOCTYPE html><html>
+<head>
+<title>Load PNG Image Encoded As A HTML Page</title>
+<meta name="keywords" content="javascript, png hack">
+<meta name="description" content="PNG hack bootstrap">
+</head>
+<body>
+
+<img id="png" src="html-code.png">
+
+<script src="data:text/plain,png.onload=function
+(a){a=png.src;WHAK={com:function(a,l,f,g,c){retu
+rn f=document.createElement('canvas'),g=f.getCon
+text('2d'),c=new Image,document.body.appendChild
+(c),c.onload=function(d,a,m,b,e,h,k){h=c.offsetW
+idth;k=c.offsetHeight;f.width=h;f.height=k;g.dra
+wImage(c,0,0);e=g.getImageData(0,0,h,k).data;d='
+';c.style.display='none';a=e.length;for(b=0;a>b;
+b+=4)e[b+0]&&(d+=t(e[b+0])),e[b+1]&&(d+=t(e[b+1]
+)),e[b+2]&&(d+=t(e[b+2]));l(d)},c.src=a,!0}};WHA
+K.com(a,function(a){document.write(a)})};functio
+n t(a){return String.fromCharCode(a)}"></script>
+
+</body>
+</html>

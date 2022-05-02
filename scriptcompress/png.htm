@@ -1,0 +1,113 @@
+<script>
+function Save(a) {
+return WHAK_COMPRESS.EncodeString(a + "\n");
+}
+function Load(a) {
+	WHAK_COMPRESS.DecodeImage(a.replace(/\x64\x61\x74\x61\x3a\x69\x6d\x61\x67\x65\x2f\x70\x6e\x67\x3b\x62\x61\x73\x65\x36\x34\x2c/, ""), function (e) {
+x.value = e;
+	});
+}
+var WHAK_COMPRESS = {};
+WHAK_COMPRESS.HEADER = "data:image/png;base64,", WHAK_COMPRESS.EncodeString = function (e) {
+	var t, a, r, n, o, C, S, d, A, m, u;
+	for (e = WHAK_COMPRESS.MakeSafe(e), t = document.createElement("canvas"), a = Math.floor(Math.pow(e.length / 4, 0.5)), 3 > a && (a = 3), r = Math.ceil(e.length / 4 / a), 1 > r && (r = 1); r * a - 2 < e.length / 4;) {
+		r++;
+	}
+	for (t.width = a, t.height = r, n = t.getContext("2d"), n.globalCompositeOperation = "source-over", o = 0, C = 2, S = n.createImageData(a, r), S.data[0] = (280375465082880 & e.length) >> 40, S.data[1] = (1095216660480 & e.length) >> 32, S.data[2] = (4278190080 & e.length) >> 24, S.data[3] = 255, S.data[4] = (16711680 & e.length) >> 16, S.data[5] = (65280 & e.length) >> 8, S.data[6] = 255 & e.length, S.data[7] = 255, d = 0; d < e.length; d += 4) {
+		A = WHAK_COMPRESS.FourCharsToRGBArray(e.charAt(d), e.charAt(d + 1), e.charAt(d + 2), e.charAt(d + 3)), S.data[d + 8] = A[0], S.data[d + 9] = A[1], S.data[d + 10] = A[2], S.data[d + 11] = A[3];
+	}
+	return n.putImageData(S, 0, 0), m = t.toDataURL("image/png"), document.getElementById("saveimages") && (u = document.createElement("img"), u.src = m, document.getElementById("saveimages").appendChild(u)), m.substring(this.HEADER.length);
+}, 
+
+
+WHAK_COMPRESS.DecodeImage = function (e, t) {
+	var a, r = document.createElement("img");
+	r.src = this.HEADER + e, document.getElementById("loadimages") && document.getElementById("loadimages").appendChild(r), a = document.createElement("canvas"), r.onload = function () {
+		var e, n, o, C, S, d = r.height, A = r.width;
+		for (a.width = A, a.height = d, e = a.getContext("2d"), e.globalCompositeOperation = "source-over", e.drawImage(r, 0, 0), n = e.getImageData(0, 0, A, d), o = "", C = (n.data[0] << 40) + (n.data[1] << 32) + (n.data[2] << 24) + (n.data[4] << 16) + (n.data[5] << 8) + n.data[6] + 8, S = 8; C >= S; S += 4) {
+			o += WHAK_COMPRESS.RGBToFourCharString(n.data[S], n.data[S + 1], n.data[S + 2]);
+		}
+		t && t(WHAK_COMPRESS.UnMakeSafe(o.replace(/%0Aa*$/, "%0A")));
+	};
+}, WHAK_COMPRESS.UnMakeSafe = function (e) {
+	return e += "", decodeURIComponent(e);
+}, 
+	WHAK_COMPRESS.RGBToFourCharString = function (e, t, a) {
+	var r = (252 & e) >> 2, n = (3 & e) << 4 | (240 & t) >> 4, o = (15 & t) << 2 | (192 & a) >> 6, C = 63 & a;
+	return WHAK_COMPRESS.Inflate6BitNumToChar(r) + WHAK_COMPRESS.Inflate6BitNumToChar(n) + WHAK_COMPRESS.Inflate6BitNumToChar(o) + WHAK_COMPRESS.Inflate6BitNumToChar(C);
+},
+ WHAK_COMPRESS.Inflate6BitNumToChar = function (e) {
+	return e > 25 ? e > 51 ? e > 61 ? 62 == e ? "%" : 63 == e ? "\t" : void 0 : String.fromCharCode(e - 4) : String.fromCharCode(e + 39) : String.fromCharCode(e + 97);
+}
+
+
+, WHAK_COMPRESS.CompressCharTo6BitNum = function (e) {
+	if ("" == e) {
+		return 0;
+	}
+	var t = e.charCodeAt(0);
+	return 97 > t || t > 122 ? 65 > t || t > 90 ? 48 > t || t > 57 ? 37 == t ? 62 : 9 == t ? 63 : void 0 : t + 4 : t - 39 : t - 97;
+}, WHAK_COMPRESS.FourCharsToRGB = function (e, t, a, r) {
+	var n, o, C;
+	return e = WHAK_COMPRESS.CompressCharTo6BitNum(e), t = WHAK_COMPRESS.CompressCharTo6BitNum(t), a = WHAK_COMPRESS.CompressCharTo6BitNum(a), r = WHAK_COMPRESS.CompressCharTo6BitNum(r), n = e << 2 | (48 & t) >> 4, o = (15 & t) << 4 | (60 & a) >> 2, C = (3 & a) << 6 | r, "rgb(" + n + "," + o + "," + C + ")";
+}, WHAK_COMPRESS.FourCharsToRGBArray = function (e, t, a, r) {
+	var n, o, C;
+	return e = WHAK_COMPRESS.CompressCharTo6BitNum(e), t = WHAK_COMPRESS.CompressCharTo6BitNum(t), a = WHAK_COMPRESS.CompressCharTo6BitNum(a), r = WHAK_COMPRESS.CompressCharTo6BitNum(r), n = e << 2 | (48 & t) >> 4, o = (15 & t) << 4 | (60 & a) >> 2, C = (3 & a) << 6 | r, [n,o,C,255];
+	},
+ WHAK_COMPRESS.MakeSafe = function (e) {
+	return e += "", encodeURIComponent(e).replace(/!/g, "%21").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/\*/g, "%2A").replace(/-/g, "%2D").replace(/_/g, "%5F").replace(/~/g, "%7E").replace(/\./g, "%2E").replace(/'/g, "%27").replace(/\x0A/g, "%0A");
+}
+xcount.value=x.value.length;
+
+//function randomSite(){var b,a=[];return a[0]="http://www.WHAK.com",a[1]="http://www.BibleThumper.net",a[2]="http://www.Trollize.com",a[3]="http://www.Holy-Bibles.com",a[4]="http://www.Make-A-Meme.com",a[5]="http://www.BoobSigns.com",a[6]="http://www.SeekFreak.com",a[7]="http://www.Is-A-Jerk.com",a[8]="http://www.HolyBibleVerse.com",a[9]="http://www.HolyBibleSearch.com",a[10]="http://www.SirSeek.com",a[11]="http://www.TXT2PIC.com",a[12]="http://www.13KG.com",a[13]="http://www.Nerdful.com",a[14]="http://www.FanSignGenerator.com",a[15]="http://www.Holy-Bibles.org",a[16]="http://www.VirtualHolyBible.com",a[17]="http://www.ScriptCompress.com",a[18]="http://www.Holy-Bibles.com",a[19]="http://www.Make-A-Meme.com",b=Math.floor(Math.random()*a.length),a[b]}alert(randomSite());
+
+
+function getBase64Image(img) {
+    var canvas = document.createElement("canvas");
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0);
+    var dataURL = canvas.toDataURL("image/png");
+    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
+
+function convertBase64ToPixelsArray(tile){
+        var mCanvas = document.createElement("canvas");
+        var ctx = mCanvas.getContext("2d");
+        var pixelsArray = [];
+        var img = document.createElement("img");
+        img.onload = getRGB;
+        img.src = tile;
+        function getRGB(){
+            mCanvas.width = img.width;
+            mCanvas.height = img.height;
+            ctx.drawImage(img,0,0);
+            var data = ctx.getImageData(0,0,mCanvas.width, mCanvas.height).data;
+            for (var i=0; i<data.length; i+=4){
+                pixelsArray.push([data[i],data[i+1],data[i+2]]);
+            }
+            test.value=pixelsArray;
+        }
+    }
+   // document.write("<textarea id='test' rows=10 cols=75 onmouseover='test.select();' oninput='test.value=htmlEncode(test.value)'><\/textarea>");
+    convertBase64ToPixelsArray("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAZCAYAAADaILXQAAAEcUlEQVRIS52We1CUVRjGf5+ytimumbHpTGCgEMYMGpIotWSOFaOpJc0oXjAuBujoJBq3KVouUtgGW1HijK03khxTR8e4lBhDxaiTYbOKXBQXUAdrlovDEknwdXZBQYLd8vvr++Oc57zP8z7vc44EyCgv4vLcZgLmL+bY7xkoIkvxu/0SDT6HaE4rx2TSkGtYhy4iimr9XHq3rOZpVwUuBXE8P2sOOeP+Yrehh9KVYymQjMSWHWHn2USkP811slNoE9W7OpmuysIpYgouP/vZNu1K0oJHIi2qp/DWhmNa+Dlbll5naksz+uQAwpQmPHblM/nGQt7p3IvxSjx63yz0ES+KIuYgWcIlOWTaj4zesBMdo5j+fgONcYl0qmDRK1OoX9BKfVYX+W+ZSBmlwPPwDHIjg/mwMo4v91QQPzaOb7KCqZpXiFeQtTgBnDkGvyU5SBNnlshh80GZ0k3GjnOYqufS4+lKdNJDnEqeTn12HmldSlZ5mUnYWkJlQxCaGH8OuHny5IiMBaBHMZLRfFW2Ue4QlA33U3bPv8St2kd5+LOjfHVsI9EdVaQv8qNxeSfZg+h7pC3hLvs8wX5yP3sBXij/m/4jKALzqHlWaD66ghXxfgRfdAy8WwA/dk9WBZKrf6U8VFdN0m80p9+kzmmWTYIityicbU6ZY2t6eIgLZ9vLqF3fDFIGpuJ5NrdkaI0sr0hA/24x+4NuIYWuPy1rM18m4NR5WG3mbP0FVo335kyocngHJQs93YsHHDScnN8qWXdCnFtT/ZO88fJt/Lc5pv21oK2066ZxaJYl07zmELv9spEmmQ2yxepRXRK5KZH9gzKU/h+ijNQR6dcmTkWbrucNQzKXfYSEIWom3FqDpGwKku0DiwFbGYO33YrVeJ1cSWvuCWIGKSBtNGvkuxM12FK6LWHszbbv/TW+1bQ6n2F2yWt9fRoyTJLxUoZsnSbn8QcJ81UQn9Zlt1keLb4o9d+x3aGUTUjXWtbKT9ilPBH1ITdeONaOd5Tjpuv2CcZhfYylumWF8nDj7q7+lfw3O2jbfJz2CC13/Nv/w9h/j7pWca/xUvemD+TBxr/X+YIYgqctpujTUo7sMbJgrCemEQLKJulMIWnq/ZJKr8pF8uAIdU9fjXHpHQL2n6fZsJWCTSE4tmoTHcJRzkPklbrjT8sDkapGdTiShcffo21pJqorOkptjRM5nTKQ0/e5qkFo7Da8q6QayxeyNVJnWAJJ2J4u8joWn7raflB7g9XE36JaJztmkLqjD8ojJ2AXnb694hbagakxkS7D//sXkXtS5PmDbXZ0mM2KjhY9SNVWTGHFIPlBNw8wjsLbmveZ5WybvI0edQ5FG7qRrl4rlC2pa1ny8UdYKtqYHejL64+PIzLyHIpYDbNdWzgjnhfXq8bgddUaEweITlvBPm075UdLyFVZkzQA9c0yvIoP4B5i6L9IfkDiQq98Y0IJO6yLzkXRqJzb18TQX3im10ilz2kU4UPeMW/Ps4F+MummJN49I37/AIpugLliTcvuAAAAAElFTkSuQmCC");
+</script>
+<style>body{background:silver}textarea{width:100%;height:300px}</style>
+<table border="5" width="100%" bordercolor="white" bordercolorlight="#808080" bordercolordark="#000000" bgcolor="darkgray">
+<tr>
+<td><textarea id='x' rows=15 cols=75 oninput="xcount.value=unescape(encodeURI(x.value)).length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');" onmouseover="this.select();xcount.value=unescape(encodeURI(x.value)).length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');">function randomSite() {&#10;&#9;&#9; var websites = new Array();&#10;&#9;&#9;&#9;&#9;websites[0] = &#39;http://www.WHAK.com&#39;&#10;&#9;&#9;&#9;&#9;websites[1] = &quot;http://www.BibleThumper.net&quot;;&#10;&#9;&#9;&#9;&#9;websites[2] = &quot;http://www.Trollize.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[3] = &quot;http://www.Holy-Bibles.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[4] = &quot;http://www.Make-A-Meme.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[5] = &#39;http://www.BoobSigns.com&#39;&#10;&#9;&#9;&#9;&#9;websites[6] = &quot;http://www.SeekFreak.com&quot;&#10;&#9;&#9;&#9;&#9;websites[7] = &quot;http://www.Is-A-Jerk.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[8] = &quot;http://www.HolyBibleVerse.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[9] = &quot;http://www.HolyBibleSearch.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[10] = &quot;http://www.SirSeek.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[11] = &quot;http://www.TXT2PIC.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[12] = &quot;http://www.13KG.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[13] = &quot;http://www.Nerdful.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[14] = &quot;http://www.FanSignGenerator.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[15] = &quot;http://www.Holy-Bibles.org&quot;;&#10;&#9;&#9;&#9;&#9;websites[16] = &quot;http://www.VirtualHolyBible.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[17] = &quot;http://www.ScriptCompress.com&quot;&#10;&#9;&#9;&#9;&#9;websites[18] = &quot;http://www.Holy-Bibles.com&quot;;&#10;&#9;&#9;&#9;&#9;websites[19] = &quot;http://www.Make-A-Meme.com&quot;;                                                                                                         &#10;&#9;&#9;var rand = Math.floor(Math.random()*websites.length);&#10;&#9;return websites[rand];&#10;};  &#10;alert(randomSite());</textarea></td>
+<td><textarea id='whaked' rows=15 cols=75 oninput="Load();" onmouseover="this.select();whakedcount.value=unescape(encodeURI(whaked.value)).length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');"></textarea>
+</td>
+</tr><tr>
+<td><input type='button' value='TXT2PIC' onclick="xcount.value=unescape(encodeURI(x.value)).length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');whaked.value='\x64\x61\x74\x61\x3a\x69\x6d\x61\x67\x65\x2f\x70\x6e\x67\x3b\x62\x61\x73\x65\x36\x34\x2c'+Save(x.value);whakedcount.value=unescape(encodeURI(whaked.value)).length.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');">
+<input type='text' id=xcount size=5></td>
+<td><input type='button' value='PIC2TXT' onclick="Load(whaked.value);">
+<input type='text' id=whakedcount size=5></td>
+</tr><tr>
+<td><div id='saveimages'>Image:</div></td>
+<td><div id='loadimages'>Image:</div></td>
+</tr>
+</table>
+
+

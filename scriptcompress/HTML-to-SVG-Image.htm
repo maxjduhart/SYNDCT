@@ -1,0 +1,303 @@
+<!DOCTYPE html><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta charset="utf-8"><meta name="apple-mobile-web-app-capable" content="yes">
+<base target="_blank"><meta http-equiv="imagetoolbar" content="no">
+<title>HTML2SVG - Convert HTML Source Code to a SVG image</title>
+<meta name="keywords" content="convert html, html to svg, svg hack, svg iframe, load html, inject html, svg, html, foreignObject">
+<meta name="description" content="Online tool to convert HTML source code to a SVG image. HTML code is compressed and then set up to be injected to a foreign object (foreignObject) inline frame (Iframe).">
+<meta property="og:title" content="HTML2SVG - Convert HTML Source Code to a SVG image">
+<meta property="og:image" content="http://www.scriptcompress.com/canada-javascript-logo.png">
+<meta property="og:site_name" content="ScriptCompress.com"/>
+<meta property="og:description" content="Online tool to convert HTML source code to a SVG image. HTML code is compressed and then set up to be injected to a foreign object (foreignObject) inline frame (Iframe)."/>
+<base target="_blank">
+<link rel="icon" type="image/ico" href="http://www.scriptcompress.com/favicon.ico">
+</head>
+<body onload="doClick(xCode.value);">
+
+<center><div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<h2><a href="http://www.ScriptCompress.com">ScriptCompress.com</a>'s HTML To SVG Image</h2>
+
+<h4>Your HTML Source Code:</h4>
+
+<textarea placeholder="" wrap="on" nowrap="false" autocapitalize="false" autocorrect="false" spellcheck="false" type=inline charset="utf-8" onfocus="this.select()" id="xCode" oninput="doInput();" onchange="doInput();"></TEXTAREA>
+<div style="color:blue;margin-top:-22px;"><input id=bx size=5 style="color:blue;text-align:center;"> <b style="background-color:#ffffff;">bytes.</b>	
+<input type=button value="Test" onclick="testHTML(xCode.value);">
+</div>
+<div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div>
+<h4>SVG Image Source Code:</h4>
+
+<textarea placeholder="" wrap="on" nowrap="false" autocapitalize="false" autocorrect="false" spellcheck="false" type=inline charset="utf-8" onfocus="this.select()" id="Packed"></textarea>
+<div style="color:blue;margin-top:-22px;"><input id=by size=5 style="color:blue;text-align:center;"> <b style="background-color:#ffffff;">bytes.</b>	
+<input type=button value="Test" title="Frame will show up 100% when viewed as an image, this is just a HTML preview to make sure it at least loads properly." onclick="testHTML(Packed.value);">
+</div>
+<p><INPUT type=button value="Convert HTML To SVG" onclick="doClick(xCode.value);"> 
+</p>
+<p><b style="font-size:14px;">DOWNLOAD:</b> 
+<input type=button value="SVG" onclick="downloader(Packed.value,'www.WHAK.com.svg');"> 
+<input type=button value="TXT" onclick="downloader(Packed.value,'www.WHAK.com.txt');"> 
+<input type=button value="HTML" onclick="downloader(Packed.value,'www.WHAK.com.html');"> 
+<b style="font-size:14px;">UPLOAD:</b> <input type="file" id="upload" onclick="doInput();">
+</p>
+<div><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+</div><div style="text-align:left;width:728px;"><p>Convert HTML source code to a SVG image. HTML code is compressed (if over 10KB) and then set up to be injected to a foreign object (foreignObject) inline frame (Iframe). HTML is compressed to a LZMA type compression, then base64ed, then merged with a decompressor to inject to an iframe and them SVG XML code is added. 
+</p>
+Now Gzip your SVG with <a href="http://www.7-zip.org">7-zip.org</a> freeware and rename the file extension from *.svg.gz to *.svgz for even smaller results!
+<p><b>Usage:</b> &lt;iframe src="<a href="http://imgh.us/JavaScript-Compression.svgz">http://imgh.us/JavaScript-Compression.svgz</a>" width="750" height="1000"&gt;&lt;/iframe&gt;</p></div>
+<input type="hidden" id="filename">
+<script type=text/javascript>
+var WHAK_com=atob('QlpoOTFBWSZTWXat3TEAHg7fn\
+UAaf/////////+////+QAAACJAAAADgJWgAAL73cOqRH\
+tlASqkOAAE87Leu3u7dbcAe923B3l1c7LuLjdiczp1o7\
+zyoUFUPamF2btWivWFUqqFFBUQqnQDBNmkoKKVBAkkEA\
+EZCYE0aDRNPSZADCU9E8TRPRNPVPCmwFBhqn5NAkkU8q\
+emRRtIGm1BkMBBiAwCAyNNGmmTQw1PCJFKfjUk2p5JtQ\
+/UgAAAA0AAAAAAASnpISNU2UxKeJ6obUGmmTJ6h+inoT\
+IaA000MhoyZNBpoHBo0aBoNAZMQGRoZAAGmmQAADBAAS\
+JBAQaEym00AENJpgCmxTFP00p7U1PRGT1AABmr+2mRJf\
+fwn8gm48nx3G/v15FBfxzcmGXBPsecpyQleS8kYtGELj\
+45hzMzroIV0J/N1XBHMbG8UpxhBXOYTkDbyArVYa/vAY\
+x8PF1o2NFDeULzNRNR7HVSQsBVCbrXxVk02+bVrL2YFw\
+njk3m3D0ZnjxfT77i+3B7FGJSqHxcMXcRcljJm6p1GRU\
+408Vk1aiqEGX3aV51MlRA0yxQ1abN6xavRMQHVozDubz\
+DdY60SsiGILW5RTkTVXISoh8A7rua0WOxHd1Ume2LV4U\
+cLk53RuKjIpTUdMpZpKPOkrrjjOTlu7qr1FGZibipUxg\
+KSQgmLrDc1EuXfNNXOXVTeTFKrzYU5p7A3vr/no9cjhN\
+d8fiH3Rd9m27i4MrAYp48lzNg2F4qg7OOLWHNNOUxjEl\
+GFkPaE1A2rnUogEongGRoJlRPSVY9pzVWd5gmr1uodyZ\
+d3t6scwJLUwJm9kizeqI1OImM0VshE7tpQ4TZ2xwHdwT\
+yTyJjLFMmq5K4KMzUB66W5dtKrDyNScRG2RWPTuueAbf\
+Ea5yRarkzXKvId3nIoS5kXFVboKxNTmTCMiqW0Nb3VQk\
+h7lrLqJl2jB6qNqtAometNjeqIlNwlek2YqA1TaVijdE\
+KXLijhBiBObGVtmrOhaTJLZ+GK0Y/yffn/Y/d36Ij/p4\
+8Y3ZRyf/s2+KBSgGFUyqXWWIDMaS6yTs5OTjG2sLQ/3Z\
++oMtLTBXlCU6v78NjzTezcHbfVhZrJfFGhh5EOik5p5+\
+jy1iBgC6BR33ZRDFDw79WBtWCRPpIykAQxJvUnYceXMg\
+nzfpk4QPyFmFi3eYzfwgMV/Bk+VWCdYWPwvZgJ0zD4Dt\
+0BBBi1k8i0Gf/M1zpC+31aZaneKF3ivlwUsOdJOyft47\
+Lk/oqk5m6qnAYCDx7zVjm50A7g8Hc+lT/1rcX+ix6yjt\
+57ppbnfvtqDpnN7gcNSPjW5yYB0YChgwiaJ1PY5JMaUb\
++IF8lu1fg/mNCaGMLxtdx7AeOJw0kA3joN/9spmRAmDk\
+KCI8x3cahcdPdoPSMldkesg9Rpe5mIg3QHCRJMTBkKtk\
+nMBjOjrZv2PKKv1IXp9V4uLTXV67vXXvPvBX6gNtPzHn\
+rNQxYxqG4Bl9QKoXWF12qEt79p0DBzmRd6jw6JQKa7Kq\
+f48d2enk2TunsBSFDGuEKDuhWuUyCHnDt5lGftjYexdP\
+KTrJ9uWj3UnWZOKO4uGoorSSZbNfVMeEvEKotAHtLJDZ\
+To8U+gU7dh39e35DE+8iW6W2qv+YfxNxrPe4Lc4t3Bp7\
+W3mq7572Gja/KgowuF2Bs51JxYBMjNwwc6rVybN6pAdW\
+5KzBcKMVAaA8NH09TkweV0vqVXo7crHVGRFE2DjqIRc6\
+okfLlXoxtI+gEPxK5cAdIEpX4vWzhi1gMhYfpuyHGeo9\
+PAQxbSaQ35pklpTohEiSxmnrl9JX81/HcfDqMJUPFpVp\
+LscM9x/p91lm59RkgTub7/sm7WQeR7heAbjoJarnaMUI\
+X+MHTi3hZxUfdl9OSbIimND4Vg9Tg/HjvLEMQK0BWGn7\
+fbXQwvvX6XbcMLMOXhzG0VpYKyZaSkLUQD1XnLB5UpQ5\
+TkZyxjb+8XGuelI8sqVkBZhUTnCOc7bLbPUTmi3jrq6P\
+2ydxLiwFsaADyMMxR8vYea4k0tfgO4edY8FX6XnRkcQx\
+UapavQWVWwwufoX9VzAe+KTzHLrZqd+MgGKU0bzWtEia\
+9CROKUjmJZ5pyJS1Ma62aM8syJyd3RlLN+NYY7w9ENEX\
+FDMkOp+ftdm38FJVF/C28zYK9VeGqkarGpYY6B9k5VO+\
+x/FssqKo57ceGPa9KKQ1sHs8VD4dL6rNTAzi6XBYlO6U\
+seOhCMC+qQG7ZshflXkjGJdRmb4t1c7dacmiV5LdAtub\
+Vdg3ZoIsVNN1gn6IS0MtcvXwtVaQCR4Fp4+wTj7BMgZy\
+B7OCRtzRwSGlBMMQcSNq+q2Sa1IeSLEPMKqlrwS9F12m\
+eCkCtyXPvPh79COuenTBK2O0rWUPXyytks9I5qEZZxmT\
+KMCQPBXAHsWdjaZbI8QuLf+wL7Yi+DPQMagmYmXnlY2d\
+0wn/KLV/tVdrwyvs17qG8HYBMZLp3lvXG+CThWDMUOMe\
+ynTPm60+0XNujdSlpYhKzhS7umqDaC0UsDqZWtJcnO3O\
+DWGyuJXbJnZIgYUnCxHA+7roa35bCqkde+IvsduyfJXZ\
+yW79Etawwnb28woWkvcYKzTWJqboLBaSwmK0W/W9Mkjh\
+XHbZOzbdmYVLeM5taNNc0q5SKGNBqtKCgnSVXbq0Cb8I\
+rc2ot96zitEeX2aPpicr2zv+RppBkSsr2m9u66+xnPhD\
+JO/C+HPDNbGt27ErIZJgHDGYst4Ym4cqflVHNEVvMuqg\
+1+zyiLrqdlhb2Rp5NbOJfRvbOKbvj4DV3c8U0XiogpXd\
+aqNkK0JpnZncvxmc6mr15dInTN0aWOooS3i5jWbLjQRt\
+EmZtvZxbu0v5fHoawGl1dkRHhKe2+5N9MTUGEwX2vF7u\
+zIZVplQrVWYjLaaxU6GHIq0K1mHRbvNlZeYNmZmqVtdS\
+5SiqunVtRSVRZFCfOxlPXe7fSg62LxVnJqBNDDsm4dtU\
+3NHZy4jBUxNPLtWNDTxWZvKgFYuhbMiNdCZCNUrgZV0h\
+uWlmywhMTu63k7CvXMybxYMy5P86E0HOtH3i97kxlJhr\
+AahVOruGBPM7aSvbXY0HHS2tcVM1Wy9qK6zrBmJ9XNl1\
+vkMobRirzQ3rg2mqrhwSnXlVvm8vUxvHUY4rFMFCLuum\
+9FtXFF3uHJM71WXM5KW3yrgl93oOhwa28sUYSFwr7Euu\
+XsTB2Bp2IWTA1NuwX3uyk4GZdj475SZbxBzcwd4oW88I\
+w3P2t+MJKSZbNORsPYUPOP2gUSxlCR/Cp0s/kOQ2vC1b\
+b3B2n5nZ0KaDEDahp1Qe7jBfC8BfefUz/vxDYJYHaKF1\
+UoMh6u52YHnPXsalw5+CVreuCsy1xu1ksnvUv8fjBwHN\
+WEoM1oGG5+ss7GuhNXBw7F6X42LYZJNzjLwgmawRbCIr\
+XJ0xzNUiw9Jy+4K77a32krohzfFvrSGSk4IHoQFKrp9f\
+v5/EHoDvPBkcg2RBsQG2qcob2sH1p4x9roum4c0eXTdr\
+hopRZ8YDwztW/E/PcwOqry97s775Dyw9OHdshbXJ8mI6\
+yS8yvRavzEQrLgkrzq3GjgcUnaxpMNhEPkQkTBeujV3e\
+szLrV6wZHQxo23r8TFEEaD1s78IUYKfoKApWlZynEpxp\
+6FnBNfRhrbmkTkoEBny215VjE3JRHcbYEeGd7F0L2sPG\
+jWkWIVnqNr3qGSJ6s3GHTRTK6UoIuKgMkSj/NCXjz7kT\
+rqmAIgPw1vSTd4dro0NC80DlJ+cM4W5ksw7WCgTZ8Etb\
+BtdrF+grkJfbY0bDz92j3eOvL2Kz5j0CSC5UdmjPqFke\
+sJIL7Cg+bbidFUDagvGchCHJzcF6GgdJexrD6dIHCWct\
+GVsLh6u2jARMizTfNWYZMK7jm0hswPol95wAdrPhs068\
+9JKxpKwGnjSNGiJzmzFjbiMwwjG0HCqebT2fNdMh6plW\
+S2EUckS6mVYyMIxTCEuDc4uMcbxmVGogoiiYZUjKolJk\
+DkHh9IwZ9uEFRoTKiTvoEpXh/QllKq8UiIoIoitDiQRp\
+RppCMrw01ERWgRaVGkRRbanORpG0g7S0CxVuUQWlRVb4\
+BKtpQQufSpLyyhVqTFxyMDoCsQtoUaVLCywsRVHpZ7Y6\
+zDbNiKWMikiVBEatiC9OJhwDSK0p8UrrOcxnULFQu7tB\
+eySvfK9Du/pKsUYhlQlnfqDNnyZIlNlGIg6TmQVBJCLR\
+fRBQfBwYT+Q17TJ+BJ2Liz5eyaHw82BftKjkXknlQ5CI\
+geFakEHOixIgKLOCKQvtJuulYAwBx8J3DmMbM8vecFr3\
+mQRElcl2sn80N5P+ht7HddW8iz44/fbhXfun2yKMWtIk\
+skUkKBCUoZ8MbFSElxm13ocZxrxzCWx7M3WuXAo9CbVl\
+2QlGkniO/+wxv58IzUpGkU4M7jES5AVEsBhxZJB+rVVQ\
+MEIURqiqaCKKoiZhBxX38nO8ZfRkbYrTSovsSNvXZfEx\
+YKKL4a+mWWJvQVJWuM23mh1KqEQURcgghB3cgxjrVMkE\
+iwIetRgYBJPDMHRKKbVU4Ta020n10DBbH04XlzSSU+pD\
+QS4jTpmfFoRPIhGOlMTa9maRMp7xwB09RbhpNcYxOUNY\
+WcI7LG6uaRG5hYtUWJDIJFkRditbS56bOZDUFPKqy5eI\
+Y5Gfrfv/5cjsn4gM5HOWSvdRBtwlJ9NwWI7PDfpjNIcp\
+Ths8ulggyyLkYVSmD6ZdV4wOJyuHv64HXcggnr3yAgCJ\
+IMFN+eAMep0lVdpofszV1EFTDUQThyqy0ncu1aRVyNQ1\
+ICiWwRVFpRjG0QyAY1Wk7TRs4AAK8aCXB69bpwxAvZ7f\
+L18+hQGlD0PWIgdxDPZ9h7tAzURj9tqiLN9mp6VSMgOB\
+xOHECNemGhcKkErfipTAt8cCNR3DPDhg8YvzuWGa+yjz\
+VlbWUyWilK0sqqVprVO0Rl1wzoXQV3bYOZCCqUZ2oIho\
+qo1hnHF8UxSP3PSJVuYRrXGWngxd0+ckpV7J9e5SKvBi\
+aZfTCWGm2i+NcrMIhlqCqItTN20RGRMSUtvKdWDfpxpB\
+6lxHELTk36aHkVtsEMs0mi8KGCqnVPAbW2TagxSQXjcx\
+MaQwbLrqFGGCL6PUQisEGYLTcqWiF0gpXRJEiHcy2Tuz\
+Bks61ZumZ8zx9Vp5VyCCO10hIXRXSOkBc/YUF/Kierov\
+T1s1IDGptTxuKDMTu0mTJ0WQ0SqhNtuUED0zBcqQvCaL\
+s+q00+kKYBfXNdUvzYXXezgRBHgdqBfc2/U+wG1JLqWk\
+ltYVYymCRMm7nTjwhaF0a6HXxYgOmAvirq+xIzYhZXZB\
+fUwFsSz4sZL3LhuspGfDzJqo9/JZ62LW/eQFrKwiL2bW\
+SeaV+jNWo1wZEdm6RPMB7DsabsdKMkzked5+KuVKEspW\
+4aqrVARsd4k7riMazZI7nmcFh7ksUlgCu4eSZCmHhbc7\
+iFPU9GWSkHg0Rb6WsroGrTKhIvdSYMSb0dipDyop8G1g\
+zz75vOCKAtTPFMtRwoEVcJJIiDCkgMQHvvDxuLxoOIYU\
+TKY0vqT0SR3MB1+508M7aRZI0qMm7a9WSqlF0YqF9Z4T\
+oAL1ma9SB5x5x1cdLtelKEzEmCfQS7Vmrmpc3Re3CkF3\
+LPVGp5kMbYm/kC73rudxrr9f3yeIHHDk0ibAwVmIX4Z6\
+SegnWc7M2dzgdxKWmykB6NBWoMPpzE4gmL1fA6OXfd7q\
+ugsz0+EeUl+tzlmng2KrBfThZeLLk8FnNtpzDnWb6uDz\
+j2n3j35JAwvFd+PWbfqTKN1MbOZU11cFQGUonhc1TFmG\
+JSSfnFSDVoKOBljR0YHzpe8rvg4IXiVitCCIeWxU0I8S\
+MhVC2DUslyKDOmZzDHXTPfLVjTWHZpkIRFAgdffwmOqa\
+jSMny1xfaz0mYkFpaXSQIzbJrrLaNhjwTyyTerv83rOo\
+Z30gvOGbK8N2FCu7iBUSDzvIYXmMaQ5we91hLEsAqVo7\
+Xic5kvSabZF6ZgvkfFTotRxjGfeV17XnJW6vra34cX3z\
+gb0bgwALbDUkZ1U75LE3aJd2zvHrnbOTCa76BRH5iy/L\
+XQOCfM4m2Vufhk3pu9iWqaHtjyaNG3TxvZ6TIlY33Xts\
+ZuWEHEBjbMREWPKeYsPPmjjhQSVxV9L4yVV1naduvihK\
+WTwnroUkRpUqU7ne6BGh9E0SQtiThAW+Yx8hg18BaC7K\
+Fzs3QOKgmnKJsVuSN15vMEWMxioK5hh3Kcw8l8Zx8B5k\
+GjjcHuYJ0HPQG/pfBbBSIO6sN+x1rFjWfHLqgTMkH0jn\
+eQLc2s6suTfTt8U0Bvg8IV4Tgf05ZWu98+2ZYIJuURsg\
+7iKjjOMrGB4sBrKjCVgUlIVkhAcPHkvbT7/f8XTYHWV8\
+fIU+XvF7xfV2/vckZteSp1egUUjLr/fOK+mjGTMuiiVi\
+uCVfPPg4uJcgv7i3Kku8+gWclVTiUNImcNAOOfLkufdf\
+gl9KWNJ5CaclxsZZznOsXi1A5B8WbqePf6ATheUmLzny\
+lQzMMNak7mthq16uvBlsry69OmGTwocWgGdd8FunPOvU\
+K1JcWMUoSKsscnYicX1MKJFBimVxhNCC0rV3p6aSmawM\
+Dr31y11zirOaF/2Ymw144MjZh09MyCmYUrR7L1mrqSpL\
+fQgmX1iMX4bqbNDWClmFTkockSHCUPF00z0y80r8FRGj\
+icM8U++jKy697yYrvc2WpqiDMknPJ0LzPvlsPQrxPSmK\
+aebQ7w/2IevGj2EBw/mdE5kifoE/uUcHF2KQQfqMcQez\
+37g8384URrk3ZOxC6Cr4jHiqmW+alwsmGQwJhMDSlc/M\
+KLXjO8e4fa7XxyXW1bED3ZXKexeO0DQChgJiYvzBpQmP\
+zhGlrqZ3jXpr6lsBoSivhM0GBDziIQo5WgisJFo/GHI9\
+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\
+///P+f19H9BdyRThQkHat3TEA==');var W,H,A,K='N=$(){$ t(){V.k=$(t){Z(Y i,h,o,s=t.@,n=[],f=0;s>f;f++){n.R([f,t[f]])}Z(n.R([s,-1]),f=[],s=n[0],t=s[0],s=s[1],i=1;i<n.@;i++){if(h=n[i][0],o=n[i][1],s){Z(;h>t;t++){f.R(X r(t,s))}}if(t=h,s=o,-1==o){G}}Z(f.Q($(t,r){? t.a-r.a||t.M-r.M}),V.J=f,n=0,t=-1,V.c=[],s=null,f=0;f<V.J.@;f++){i=V.J[f],t+=1,i.a!=n&&(t<<=i.a-n,s=V.c[n=i.a]={}),s[i.l=t]=i}V.e=16,V.f=-1,V.J.ZEach($(t){t.a<V.e&&(V.e=t.a),t.a>V.f&&(V.f=t.a)},V)}}$ r(t,r){V.M=t,V.a=r,V.l=void 0}$ i(){V.j=$(t){V.y=[];Z(Y r=0;31>r;r++){V.y[r]=(1<<r)-1}V.y[31]=-2147483648,V.d=t,V.D=V.z=V.a=0},V.g=$(t){Y r=t>>1;? V.b(r)*(1<<r)+V.b(t-r)},V.b=$(t){Z(;V.a<t;){V.z=(V.z<<8)+V.d.#(V.D++),V.a+=8}Y r=V.y[t],i=V.z>>V.a-t&r;? V.a-=t,V.z&=~(r<<V.a),i}}$ h(t,r){Y i,h,o,s,n,f,e=t.@;if(r>=e){L rx("Out")}if(0>r){L rx("Outs")}Z(i=t,t=t.T(""),i.Q(),h={},s=e-1;s>=0;s--){h[i[s]]=s}Z(o=[],s=0;e>s;s++){o.R(h[t[s]]++)}Z(h=i[s=r],n=[],f=1;e>f;f++){n.R(i[s=o[s]])}? h+n./().T("")}$ o(t,r,i){Z(Y h=t[r];r>0;t[r]=t[--r]){}i.R(t[0]=h)}?{^:{i:$(r){$ s(t){Z(Y r,i,h=[],o=t.b(16),s=I;s>0;s>>=1){if(o&s){Z(r=t.b(16),i=I;i>0;i>>=1){h.R(Boolean(r&i))}}P{Z(r=0;16>r;r++){h.R(!1)}}}? h}Y n,f=X i;if(f.j(r),f.b(16),104!=f.b(8)){L"Un"}if(r=f.b(8),!(r>=49&&57>=r)){L"Unk"}? r-=48,n=[],$(r,i,e,a,u,c,b,l,d,p,g,v,w,A){Z(;;){if(r=f.g(48),f.g(32),54156738319193!=r){if(25779555029136==r){f.b(7&f.a);G}L" 0x"+r.toString(16)}if(f.b(1)){L"B"}if(r=f.b(24),i=s(f),e=f.b(3),2>e||e>6){L rx("not")}Z(a=[0,1,2,3,4,5,6].slice(0,e),u=[],c=0,b=f.b(15);b>c;c++){Z(l=0;f.b(1);){if(l++>=e){L rx("2("+e+") ")}}o(a,l,u)}Z(l=[],a=i.reduce($(t,r){? t+r},0)+2,b=0;e>b;b++){Z(d=f.b(5),p=[],c=0;a>c;c++){if(0>d||d>20){L rx("side")}Z(;f.b(1);){d-=2*f.b(1)-1}p.R(d)}l.R(p)}Z(c=[],e=0;e<l.@;e++){b=X t,b.k(l[e]),c.R(b)}Z(e=[],l=i.@-1;l>=0;l--){i[l]&&e.R(String.fromCharCode(l))}Z(e./(),l=i=0,d=b=0,p=[];;){0>=--l&&(l=50,i<=u.@&&(g=c[u[i++]]));Z(w in g.c){if(f.a<w&&(f.z=(f.z<<8)+f.d.#(f.D++),f.a+=8),v=g.c[w][f.z>>f.a-w]){f.z&=f.y[f.a-=w],v=v.M;G}}if(v<0||1<v){Z(A=e[0];b>0;b--){p.R(A)}if(v==a-1){G}o(e,v-1,p)}P{0==b&&(d=1),b+=d<<v,d<<=1}}Z(r=h(p,r),u=[],c=0,a=r.@;a>c;){if(l=r.#(c),a-4>c&&r.#(c+1)==l&&r.#(c+2)==l&&r.#(c+3)==l){Z(l=r.charAt(c),i=r.#(c+4)+4;i>0;i--){u.R(l)}c+=5}P{u.R(r[c++])}}n.R(u.T(""))}}(),n.T("")}}}}(),F=N.^.i(N_^),eval(F);',W='#$/?@DFGIJLMNPQRTVXYZ^'.split(''),H='charCodeAt,function,reverse,return,length,count,datas,break,32768,table,throw,code,WHAK,else,sort,push,join,this,new,var,for,com'.split(',');for(A=0;A<H.length;A++)K=X=K.split(W[A]).join(H[A]);eval(X);
+</script>
+</body> 
+</html>

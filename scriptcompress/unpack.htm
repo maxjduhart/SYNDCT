@@ -1,0 +1,34 @@
+<style>body{font-size:12px;margin:10}textarea{width: 728px;height:200px;resize:both;}body{background:#fff;font-family:Arial;font-size:14px;margin:10}textarea{width:728px;height:200px;resize:both;-webkit-box-shadow:inset 2px 5px 3px 0 gray;-moz-box-shadow:inset 2px 5px 3px 0 gray;box-shadow:inset 2px 5px 3px 0 gray;background-color:#F5F5F5}font{left:20;font-size:20px;position:relative;border-color:#eee;border-style:solid;border-width:5px 5px 5px 5px;background:#F5F5F5;text-shadow:1px 1px 0 rgba(255,255,255,1);margin:20px 0 15px -15px;padding:5px 15px;box-shadow:2px 5px 3px rgba(0,0,0,.3)}input{font-size:14px;border:1px solid #000;-webkit-box-shadow:2px 2px 2px gray;-moz-box-shadow:2px 2px 2px gray;box-shadow:2px 2px 2px gray;cursor:pointer;color:#000}.animated{-webkit-animation-duration:2s;animation-duration:2s;-webkit-animation-fill-mode:both;animation-fill-mode:both}@-webkit-keyframes swing{20%,40%,60%,80%,100%{-webkit-transform-origin:top center}20%{-webkit-transform:rotate(15deg)}40%{-webkit-transform:rotate(-10deg)}60%{-webkit-transform:rotate(5deg)}80%{-webkit-transform:rotate(-5deg)}100%{-webkit-transform:rotate(0deg)}}@keyframes swing{20%{transform:rotate(15deg)}40%{transform:rotate(-10deg)}60%{transform:rotate(5deg)}80%{transform:rotate(-5deg)}100%{transform:rotate(0deg)}}.swing{-webkit-transform-origin:top center;transform-origin:top center;-webkit-animation-name:swing;animation-name:swing}
+</style><title>The Unpacker of Packed JavaScripts</title>
+<body><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><br>
+<font class="animated swing">4 in 1 UnPackers - Unpack Packed JavaScript <small>(by <a href="http://www.ScriptCompress.com">ScriptCompress.com</a>)</small>:</font>
+<p id=x></p>Paste below and then hit a button.<br>
+<textarea onmousemove="document.getElementById('countbefore').value=document.getElementById('before').value.length;" spellcheck="false" onmouseover="this.select()" id="before" placeholder="If all fails, you can do it manually:&#10;&#10;Change eval to document.write, now it will print out the code.&#10;&#10;Or make a textarea with id TXT (&lt;textarea id=TXT&gt;&lt;/textarea&gt;), now make say&#10;	&lt;script&gt;var X=packedCode;eval(X);&lt;/script&gt;&#10;changed to &#10;	&lt;script&gt;var X=packedCode;TXT.value=X;&lt;/script&gt;&#10;Now it will print to text box.">x=&#39;function &#27;{var &#30;=new Array&#22;0!WHAK&#25;!ScriptCompress&#31;2!Trollize&#31;3&#28;-&#29;s&#31;4!Make-A-Meme&#31;5!BoobSigns&#31;6!SeekFreak&#31;7!Is-A-J&#21;k&#31;8&#28;&#29;V&#21;se&#31;9&#28;&#29;Search&#25;0!SirSeek&#25;1!TXT2PIC&#25;2!13KG&#25;3!N&#21;dful&#25;4!FanSignGen&#21;ator&#25;5&#28;-&#29;s.org&quot;&#22;16!VirtualHoly&#29;&#25;7!&#29;Thump&#21;.net&quot;;var &#26;=&#23;floor(&#23;&#24;()*&#30;.length);return &#30;[&#26;]}window.location=&#27;;!]=&quot;http://www.&#31;.com&quot;&#22;&#30;website&#29;Bible&#28;!Holy&#27;&#24;Site()&#26;tempValue&#25;&#31;1&#24;random&#23;Math.&#22;;&#30;[&#21;er&#39;;for(i in y=&#39;&#21;&#22;&#23;&#24;&#25;&#26;&#27;&#28;&#29;&#30;&#31;!&#39;){z=x.split(y[i]);x=z.join(z.pop())}eval(x)</textarea>
+<p>Your results below.</p>
+<textarea onmouseover="this.select()" spellcheck="false" onfocus="this.select()" id="after" title=""></textarea>
+<p><input value="Un-Pack" type=button onclick="document.getElementById('after').value=decode(before.value);bytes();" title="Tries to format output so it's not just one ugly line of text"> or
+<input value="UnPack" type=button onclick="after(document.getElementById('before').value);bytes();" title=""> or
+<input value="UnPacker" type=button onclick="document.getElementById('after').value=depack(document.getElementById('before').value);bytes();" title=""> or
+<input value="DePack (safest)" type=button onclick="decompress(before.value);" title="Opens in a new window and ascii encodes some characters to ensure nothing can be executed">
+</p>Before: <input value="" size="5" id=countbefore> After: <input value="" size="5" id=countafter> bytes
+<script>
+function extract(p){if(""!=p){c=unescape(p);var _e=eval,s="eval=function(v){c=v;};"+c+";eval=_e;";eval(s)}else c=p;return c}function after(e){document.getElementById("after").value=extract(e)}function depack(p){if(""!=p){c=unescape(p);var _e=eval,s="eval=function(v){c=v;};"+c+";eval=_e;";eval(s)}else c=p;return c}function decompress(a){return a=eval(a.replace("eval(","whak=window.open('');whak.document.write('<title>WHAK.com</title>'+")),a.replace(/\x3c/g,"&#60;").replace(/\x22/g,"&#34;").replace(/\x27/g,"&#39;").replace(/\x2e/g,"&#46;").replace(/\x5c/g,"&#92;").replace(/\n/g,"&#10;").replace(/\r/g,"&#10;").replace(/\x69/g,"&#105;").replace(/\x3d/g,"&#61;").replace(/\x61/g,"&#97;")}function decode(x){function G(e){try{for(var n=0,t=-1,c="",a=0;a<e.length;a++){if(-1!=e[a].indexOf("{")&&n++,-1!=e[a].indexOf("}")&&n--,t!=n){for(t=n,c="";t>0;)c+="	",t--;t=n}e[a]=c+e[a]}}finally{n=null,t=null,c=null}return e}var env={eval:function(e){x=e},window:{},document:{}};return eval("with(env) {"+x+"}"),x=(x+"").replace(/;/g,";\n").replace(/{/g,"\n{\n").replace(/}/g,"\n}\n").replace(/\n;\n/g,";\n").replace(/\n\n/g,"\n"),x=x.split("\n"),x=G(x),x=x.join("\n")}function bytes(){function e(e){return unescape(encodeURI(e)).length}document.getElementById("countbefore").value=e(document.getElementById("before").value),document.getElementById("countafter").value=e(document.getElementById("after").value)}
+for (var a = document, b = a.head.innerHTML + "\n" + a.body.innerHTML, c = "", d = 0; d != b.length; ++d)
+	switch (b.charAt(d)) {
+	case "<":
+		c += "&lt;";
+		break;
+	case ">":
+		c += "&gt;";
+		break;
+	case "&":
+		c += "&amp;";
+		break;
+	default:
+		c += b.charAt(d);
+	}
+a.write("<pre style='white-space:pre-wrap;position:absolute;top:0;z-index:-420;color:#eee;font-size:14px'>" + c + "</pre>");
+</script>
+<hr><script>google_ad_client="ca-pub-4292731853440790";google_ad_width=728;google_ad_height=90;google_ad_format="728x90_as";</script><script src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script><hr><ul><li><a href=http://www.BookmarkApplets.com target=_blank><b>Bookmark</b>Applets.com</a> - free web apps that go in your web favorites</li><li><a href=http://www.whak.com target=_blank>WHAK.com</a> - whacky things...</li><li><a href=http://www.make-a-meme.com target=_blank>Make-A-Meme.com</a> - create funny meme images online</li></ul>
+</body>
+</html>
