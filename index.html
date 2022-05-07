@@ -597,14 +597,14 @@ jQuery(document).ready(function () {
         autoplay: true,
         posterType: 'none',
     });
+});
     //FORCE VIDEO PLAY - SAFARI 11 ISSUE
     $(window).on('load', function () {
         jQuery('video').data('vide').getVideoObject().play();
         jQuery('*').data('vide').getVideoObject().play();
         jQuery('video').data('vide').getVideoObject().play();
+        $("video#BG-VIDEO").hide().remove();
     });
-
-});
     </script>
 </body>
 
